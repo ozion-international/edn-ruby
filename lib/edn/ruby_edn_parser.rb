@@ -162,7 +162,7 @@ module EDN
 
       result
     end
-  
+
     def read_digits(min_digits=0)
       result = ''
 
@@ -170,7 +170,7 @@ module EDN
         result << @s.current
         @s.advance
       end
- 
+
       n_digits = 0
       while @s.current =~ /[0-9]/
         n_digits += 1
@@ -198,7 +198,7 @@ module EDN
         #puts "bbb: #{result}"
       end
       #puts result
-      result.to_f 
+      result.to_f
     end
 
     def read_number(leading='')

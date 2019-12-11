@@ -15,7 +15,14 @@ module EDN
 
     def advance
       return @current if @current == :eof
-      @current = @io.getc || :eof
+      getc_output = @io.getc
+
+      if getc_output.is_a?(String)
+        @current = getc_output || :eof
+      else
+        # ruby < 1.9.1
+        @current = (getc_output.nil? ? :eof : getc_output.chr)
+      end
     end
 
     def digit?(c=current)
